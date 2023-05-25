@@ -1,0 +1,67 @@
+#  Get Event by ID
+GET /events?id=:event_id
+Parameters
+Parameters
+Name	Type	Description
+id	    string	Required. Unique ID of the event.
+Response
+200 OK on success
+500 Internal Server Error on server error
+
+
+# Get Events by Recency and Pagination
+Retrieves events based on recency and paginates the results.
+GET /events?type=latest&limit=:limit&page=:page
+Parameters
+Parameters
+Name	Type	Description
+type	string	Optional. Type of events to retrieve.
+limit	number	Optional. Number of events per page.
+page	number	Optional. Current page number.
+Response
+200 OK on success
+404 Not Found if event not found
+500 Internal Server Error on server error
+
+# Post Create Event
+Creates a new event and returns the ID of the created event.
+POST /events
+Parameters
+
+Name	        Type	Description
+name	        string	Required. Name of the event.
+tagline	        string	Required. Tagline for the event.
+schedule	    string	Required. Date and time of the event (ISO 8601).
+description	    string	Required. Description of the event.
+moderator	    string	Required. ID of the event moderator.
+category	    string	Required. Category of the event.
+sub_category	string	Required. Subcategory of the event.
+rigor_rank	    number	Required. Integer value representing event rigor.
+files[image]	file	Optional. Image file for the event.
+Response
+200 OK on success
+500 Internal Server Error on server error
+
+# Update Event
+Updates an event based on its unique ID.
+PUT /events/:id
+Parameters
+Parameters
+Name	Type	Description
+id	string	Required. Unique ID of the event to update.
+name	string	Required. Name of the event.
+tagline	string	Required. Tagline for the event.
+schedule	string	Required. Date and time of the event (ISO 8601).
+description	string	Required. Description of the event.
+moderator	string	Required. ID of the event moderator.
+category	string	Required. Category of the event.
+sub_category	string	Required
+-
+
+# Delete Event
+Deletes an event based on its unique ID.
+DELETE /events/:id
+Parameters
+Name	Type	Description
+id	    string	Required. Unique ID of the event.
+
